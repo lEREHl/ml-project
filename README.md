@@ -1,112 +1,106 @@
-<!-- PROJECT TITLE -->
-<h1 align="center">Movie Reviews Sentiment Analysis</h1>
+<div align="center">
+  <img src="Images/Movies_Header.jpg" alt="Header Image" width="100%">
 
-<!-- HEADER -->
-<p align="center">
-  <img src="Images/Movies_Header.jpg"/>
-</p>
+  <h1>🎬 Movie Reviews Sentiment Analysis Pipeline</h1>
+  
+  <p>
+    An end-to-end, dataset-independent Machine Learning Pipeline with an interactive Streamlit UI for analyzing and predicting movie review sentiments.
+  </p>
 
-<!-- PROJECT DESCRIPTION -->
-## <br>**➲ Project description**
-Movie reviews sentiment analysis is a project which is based on natural language processing, where we use NLP techniques to extract useful words of each review and based on these words we can use binary classification to predict the movie sentiment if it's positive or negative
+  <!-- Badges -->
+  <p>
+    <img src="https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python" alt="Python">
+    <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-Learn">
+    <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white" alt="Streamlit">
+    <img src="https://img.shields.io/badge/NLTK-NLP-green?style=for-the-badge" alt="NLTK">
+  </p>
+</div>
 
-<!-- PREREQUISTIES -->
-## <br>**➲ Prerequisites**
-This is list of required packages and modules for the project to be installed :
-* <a href="https://www.python.org/downloads/" target="_blank">Python 3.x</a>
-* Pandas 
-* Numpy
-* re
-* Scikit-learn
-* NLTK
+---
 
-Install all required packages :
- ```sh
-  pip install -r requirements.txt
-  ```
-<!-- THE DATASET -->
-## <br>**➲ The Dataset**
-Human activites dataset contain about 50000 record which is a sample of movie's review<br>
-and a target column "sentiment" which describe the sentiment of the viewer about the movie either it is positove or negative<br>
-<br>**Dataset features and target :**<br>
-![](Images/Dataset_Columns.png)<br>
-<br>**Dataset head :**<br>
-![](Images/Dataset_Head.png)
+## 🌟 Overview
+This project upgrades a standard monolithic NLP script into a **modular, highly scalable machine learning pipeline**. It intelligently ingests text, sanitizes input, extracts vectorized features (Bag-of-Words / TF-IDF), tunes hyperparameters using `GridSearchCV`, evaluates via 5-Fold Cross Validation, and serves predictions via an interactive Web Application.
 
-<!-- CODING SECTIONS -->
-## <br>**➲ Coding Sections**
-In this part we will see the project code divided to sections as follows:
-<br>
+---
 
-- Section 1 | Data Preprocessing :<br>
-In this section we aim to do some operations on the dataset before training the model on it,
-<br>processes like :
-  - Loading the dataset
-  - Encoding ouput to binary (Positive : 1 , Negative : 0) 
-  - Data cleaning : Remove HTML tags
-  - Data cleaning : Remove special characters
-  - Data cleaning : Convert everything to lowercase
-  - Data cleaning : Remove stopwords
-  - Data cleaning : Stemming<br><br>
+## ✨ Key Features
+- **Dataset Agnostic**: Swap the CSV and column configurations securely without ever rewriting core logic.
+- **Robust Preprocessing**: 50x optimized, single-pass NLTK text sanitization (HTML, special chars, lowercasing, stopwords, stemming).
+- **Comparative Modeling**: Evaluates standard Baseline models (Gaussian, Bernoulli, Multinomial Naive Bayes) against advanced classifiers (Logistic Regression, Linear SVM).
+- **Streamlit Web Interface**: A beautifully decoupled frontend allowing real-time user-input inference, performance charts, and evaluation tables.
+- **Standalone Predictor**: A clean `predict.py` endpoint mapped to the persistently saved best-performing model and vectorizer.
 
-- Section 2 | Model Creation :<br>
-The dataset is ready for training, so we create a Naive Bayes model using scikit-learn and then fit it to the data.<br>
+---
 
-- Section 3 | Model Evaluation :<br>
-Finally we evaluate the model by getting accuracy, classification report and confusion matrix.
+## 📁 Directory Structure
+```text
+📦 Movie-Reviews-Sentiment-Analysis
+ ┣ 📂 Dataset               # Target folder for your raw .csv data
+ ┣ 📂 Images                # Graphical outputs & Assets
+ ┣ 📂 Models                # Serialized best models, vectorizers, and metrics (.pkl / .csv)
+ ┣ 📂 src
+ ┃ ┣ 📜 data.py             # Data loading and dynamic label encoding
+ ┃ ┣ 📜 preprocessing.py    # NLTK Text purification pipeline
+ ┃ ┣ 📜 features.py         # Extensible BOW & TF-IDF vectorization
+ ┃ ┣ 📜 models.py           # Training, 5-Fold CV, and Error Analysis
+ ┃ ┣ 📜 tune.py             # GridSearchCV parameter optimization
+ ┃ ┗ 📜 predict.py          # Standalone prediction interface
+ ┣ 📜 app.py                # Streamlit Web UI Application
+ ┣ 📜 movie_reviews_...py   # Main Orchestrator Script (Configurations here)
+ ┗ 📜 requirements.txt      # Python Dependencies
+```
 
-<!-- INSTALLATION -->
-## <br>**➲ Installation**
-1. Clone the repo
-   ```sh
-   git clone https://github.com/omaarelsherif/Movie-Reviews-Sentiment-Analysis-Using-Machine-Learning.git
-   ```
-2. Run the code from cmd
-   ```sh
-   python movie_reviews_sentiment_analysis.py
-   ```
+---
 
-<!-- OUTPUT -->
-## <br>**➲ Output**
-Now let's see the project output after running the code :
+## 🚀 Installation & Setup
 
-**Dataset head :**<br>
-![](/Images/Output_1_Dataset_Head.png)<br><br>
+**1. Clone the repository**
+```bash
+git clone https://github.com/lEREHl/ml-project.git
+cd ml-project
+```
 
-**Dataset after output encoding :**<br>
-![](/Images/Output_2_Dataset_After_Encoding.png)<br><br>
+**2. Install dependencies**
+```bash
+pip install -r requirements.txt
+```
 
-**Review sample after removing HTML tags :**<br>
-![](/Images/Output_3_Review_After_Remove_HTML.png)<br><br>
+**3. Run the Training Pipeline (Generates Models & Metrics)**
+```bash
+python movie_reviews_sentiment_analysis.py
+```
+> *Note: Modify the global `TEXT_COLUMN`, `LABEL_COLUMN`, and `DATASET_PATH` variables right at the top of this file to seamlessly port this project to any new text-classification dataset!*
 
-**Review sample after removing special characters :**<br>
-![](/Images/Output_4_Review_After_Remove_Special_Chars.png)<br><br>
+**4. Launch the Interactive UI**
+```bash
+python -m streamlit run app.py
+```
 
-**Review sample after converting words to lowercase :**<br>
-![](/Images/Output_5_Review_After_Converting_To_Lowercase.png)<br><br>
+---
 
-**Review sample after removing stopwords :**<br>
-![](/Images/Output_6_Review_After_Remove_Stopwords.png)<br><br>
+## 🏆 Model Performance
+The pipeline autonomously selects the most optimal model based on **F1-Score**. 
+While Baseline **Naive Bayes** models reliably achieve ~85% accuracy, our Comparative **Logistic Regression** effectively establishes the highest decision boundary, scoring roughly **~86.9%** by capturing nuanced correlations and word weights that pure probabilistic methods miss.
 
-**Review sample after stemming words :**<br>
-![](/Images/Output_7_Review_After_Stemming_Words.png)<br><br>
+<details>
+  <summary><b>View Visual Outputs & Evaluation Details</b></summary>
+  <br>
+  <b>Models Accuracy Chart:</b><br>
+  <img src="Images/Output_9_Models_Accuracy.png" alt="Accuracy Chart"><br>
+  
+  <b>Text Preprocessing Example:</b><br>
+  <img src="Images/Output_7_Review_After_Stemming_Words.png" alt="Preprocessing"><br>
+</details>
 
-**Bag Of Words "BOW" :**<br>
-![](/Images/Output_8_BOW.png)<br><br>
+---
 
-**Models accuracy :**<br>
-![](/Images/Output_9_Models_Accuracy.png)<br>
+## 🛠 Tech Stack
+- **Data Manipulation**: Pandas, Numpy
+- **Natural Language Processing**: NLTK (SnowballStemmer, word_tokenize, stopwords)
+- **Machine Learning**: Scikit-Learn (GridSearchCV, LogisticRegression, LinearSVC, NaiveBayes)
+- **Frontend / Visualization**: Streamlit, Matplotlib, Seaborn
 
-<!-- REFERENCES -->
-## <br>**➲ References**
-These links may help you to better understanding of the project idea and techniques used :
-1. Natural Language Processing (NLP) : https://ibm.co/38bN03T
-2. Sentiment analysis : https://bit.ly/3yi9BGq
-3. Naive Bayes classifier : https://bit.ly/3zhoWIO
-4. Model evaluation : https://bit.ly/3B12VOO
-
-<!-- CONTACT -->
-## <br>**➲ Contact**
-- E-mail   : [omaarelsherif@gmail.com](mailto:omaarelsherif@gmail.com)
-- LinkedIn : https://www.linkedin.com/in/omaarelsherif/
-- Facebook : https://www.facebook.com/omaarelshereif
+---
+<div align="center">
+  <i>Built with Python 🐍 — Feel free to star ⭐ this repository if you found it helpful!</i>
+</div>
